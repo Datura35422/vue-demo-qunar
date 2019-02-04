@@ -23,7 +23,7 @@ export default {
 <style lang="stylus" scoped>
 // 1rem = html font-size = 50px
 // ~@在路径中表示src目录
-@import '~@/assets/styles/varibles.styl'
+@import '~styles/varibles.styl'
 .header
   display flex
   line-height .86rem
