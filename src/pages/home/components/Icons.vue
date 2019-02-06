@@ -89,6 +89,8 @@ export default {
   .icon >>> .swiper-container
     height 0
     padding-bottom 50% // 使swiper宽高等于icon最外层宽高，在icon类的子元素的swiper-container都使用这个样式
+  .icons
+    margin-top .1rem
   .icon
     position relative
     overflow hidden
