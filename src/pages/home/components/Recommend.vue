@@ -2,7 +2,7 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
         <div class="item-img-wrapper">
           <img class="item-img" :src="item.imgUrl" />
         </div>
@@ -19,25 +19,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1602/80/805f3e753e1cb25890.img.jpg_200x200_4669e839.jpg',
-        title: '大河口景区',
-        desc: '大河口景区描述'
-      }, {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1602/80/805f3e753e1cb25890.img.jpg_200x200_4669e839.jpg',
-        title: '大河口景区',
-        desc: '大河口景区描述'
-      }, {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1602/80/805f3e753e1cb25890.img.jpg_200x200_4669e839.jpg',
-        title: '大河口景区',
-        desc: '大河口景区描述'
-      }]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
