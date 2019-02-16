@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       // 配置接口转发，以api开头的接口替换为请求/static/mock文件夹下的数据项
       '/api': {
-        target:  'http://localhost:8080',
+        target:  'http://192.168.1.110:8080',
         pathRewrite: {
           '^/api': '/static/mock'
         }
@@ -21,7 +21,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '192.168.1.110', //  localhost can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
