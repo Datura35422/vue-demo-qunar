@@ -15,6 +15,7 @@ import HomeIcons from './components/Icons'
 import HomeCommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -26,17 +27,21 @@ export default {
   },
   data () {
     return {
+      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
       weekendList: []
     }
   },
+  computed: {
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo () {
+      this.lastCity = this.city
       // axios返回的结果是promise对象，因此用then方法处理
-      axios.get('/api/index.json')
-        .then(this.getHomeInfoSucc)
+      axios.get('/api/index.json?city=' + this.city).then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
       res = res.data
@@ -51,6 +56,11 @@ export default {
   },
   mounted () {
     this.getHomeInfo()
+  },
+  activated () {
+    if (this.lastCity !== this.city) {
+      this.getHomeInfo()
+    }
   }
 }
 </script>

@@ -6,7 +6,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="btn-list">
           <div class="btn-wrapper">
-            <div class="btn">{{this.city}}</div>
+            <div class="btn">{{this.currentCity}}</div>
           </div>
         </div>
       </div>
