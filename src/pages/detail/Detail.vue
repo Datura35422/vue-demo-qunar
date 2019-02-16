@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     getDetailInfo () {
+      this.lastId = this.$route.params.id
       // 获取url上的参数
       // axios.get('/api/detail.json?id=' + this.$route.params.id).then(this.getDetailInfoSucc)
       axios.get('/api/detail.json', {
@@ -52,6 +53,12 @@ export default {
   },
   mounted () {
     this.getDetailInfo()
+  },
+  // kepp-alive使用了exclude属性去掉某个组件时，则该组件无法使用activated
+  activated () {
+    if (this.lastId !== this.$route.params.id) {
+      this.getDetailInfo()
+    }
   }
 }
 </script>
