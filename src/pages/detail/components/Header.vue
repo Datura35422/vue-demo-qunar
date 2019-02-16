@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     handleScroll () {
-      console.log('scroll')
       const top = document.documentElement.scrollTop // 滚动时文档top高度
       if (top > 60) {
         let opacity = top / 140
@@ -75,6 +74,7 @@ export default {
   font-size .32rem
   color #ffffff
   background $bgColor
+  z-index 2
   .header-fixed-back
     position absolute
     top 0
