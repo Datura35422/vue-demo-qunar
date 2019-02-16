@@ -18,8 +18,8 @@ export default {
 .header
   position relative
   overflow hidden
-  height .86rem
-  line-height .86rem
+  height $headerHeight
+  line-height $headerHeight
   text-align center
   font-size .32rem
   color #ffffff
