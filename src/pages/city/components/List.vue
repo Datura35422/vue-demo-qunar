@@ -6,14 +6,14 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="btn-list">
           <div class="btn-wrapper">
-            <div class="btn">北京</div>
+            <div class="btn">{{this.city}}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="btn-list">
-          <div class="btn-wrapper" v-for="item of hotCities" :key="item.id">
+          <div class="btn-wrapper" v-for="item of hotCities" :key="item.id" @click="handleCityClick(item.name)">
             <div class="btn">{{item.name}}</div>
           </div>
         </div>
@@ -21,7 +21,7 @@
       <div class="area" v-for="(value, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="item of value" :key="item.id">{{item.name}}</div>
+          <div class="item border-bottom" v-for="item of value" :key="item.id" @click="handleCityClick(item.name)">{{item.name}}</div>
         </div>
       </div>
     </div>
@@ -30,12 +30,18 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   props: {
     hotCities: Array,
     cities: Object,
     letter: String
+  },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    }) // ...为展开运算符，mapState将vuex中的数据映射到计算属性中，获取mapState中的city功能数据映射到currentCity的计算属性中
   },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
@@ -48,6 +54,15 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.dispatch('changeCity', city) // 向vuex派发changeCity方法, 方法1
+      // this.$store.commit('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/') // 点击跳转到首页
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>
